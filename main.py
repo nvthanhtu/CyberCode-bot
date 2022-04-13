@@ -13,9 +13,11 @@ threshold=0.9
 max_tried = 3
 nb_enemies_killed = 0
 nb_loot_droped = 0
+start_time = 0
 
 def main():
-    level_mob_img_1 = cv.imread('Image/Level_22.png', cv.IMREAD_UNCHANGED)
+    
+    level_mob_img_1 = cv.imread('Image/Level_24.png', cv.IMREAD_UNCHANGED)
     level_mob_img_2 = cv.imread('Image/Level_23.png', cv.IMREAD_UNCHANGED)
     nearby_enemy_img = cv.imread('Image/Nearby_Enemy.png', cv.IMREAD_UNCHANGED)
     primary_weapon_img = cv.imread('Image/Primary_Weapon.PNG', cv.IMREAD_UNCHANGED)
@@ -30,10 +32,16 @@ def main():
     
     global nb_enemies_killed
     global nb_loot_droped
+    global start_time 
     
+    start_time= time.time()
     while True:
+        print("Total time run: {}".format(int(time.time()-start_time)))
         print("Killed %s mob"% nb_enemies_killed)
         print("Looted %s times"% nb_loot_droped)
+        if nb_enemies_killed > 0:
+            print("Average time to kill mob: {}".format(int((time.time()-start_time)/nb_enemies_killed)))
+            print("Loot %: {:.2f}".format(float(nb_loot_droped/nb_enemies_killed)))
         try: 
             printscreen =  np.array(ImageGrab.grab(bbox=area))
             #click on nearby enemy
