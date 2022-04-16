@@ -16,7 +16,7 @@ max_tried_main_loop =3
 nb_enemies_killed = 0
 nb_loot_droped = 0
 start_time = 0
-level_mob = 24
+level_mob = 29
 
 def main():
     global max_tried_main_loop
@@ -69,11 +69,11 @@ def main():
             #choose a target by level (do as least 2 levels)
             print ("Choosing enemy's level...")
             printscreen =  np.array(ImageGrab.grab(bbox=area))
-            clicked_mob_1 = click_on_template(level_mob_img_1, printscreen,area)
+            clicked_mob_1 = click_on_template(level_mob_img_1, printscreen,area, True)
             
             if not clicked_mob_1:
                 print("Failed to find mob_1, looking for mob_2...")
-                clicked_mob_2 = click_on_template(level_mob_img_2, printscreen,area)
+                clicked_mob_2 = click_on_template(level_mob_img_2, printscreen,area, True)
                 
             #if we cant find any mob => exit    
             if not clicked_mob_1 and not clicked_mob_2:
@@ -125,10 +125,14 @@ def main():
             break
     
         
-def click_on_template(template, screenshot, area):
+def click_on_template(template, screenshot, area, colorScale = False):
     
-    template = cv.cvtColor(template, cv.COLOR_BGR2GRAY)
-    screenshot = cv.cvtColor(screenshot, cv.COLOR_BGR2GRAY)
+    if not colorScale:
+        template = cv.cvtColor(template, cv.COLOR_BGR2GRAY)
+        screenshot = cv.cvtColor(screenshot, cv.COLOR_BGR2GRAY)
+    else:
+        template = cv.cvtColor(template, cv.COLOR_BGR2RGB)
+        screenshot = cv.cvtColor(screenshot, cv.COLOR_BGR2RGB)
     tried = 0
     while True:
         image_found = False
