@@ -1,0 +1,1 @@
+https://us-central1-codegame-dcb3b.cloudfunctions.net/api/mini-game/done

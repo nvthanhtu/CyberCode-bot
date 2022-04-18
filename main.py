@@ -1,5 +1,4 @@
 from asyncio.windows_events import NULL
-from turtle import color
 from cv2 import threshold
 import cv2 as cv
 import numpy as np
@@ -16,7 +15,7 @@ max_tried_main_loop =3
 nb_enemies_killed = 0
 nb_loot_droped = 0
 start_time = 0
-level_mob = 29
+level_mob = 36
 
 def main():
     global max_tried_main_loop
@@ -61,7 +60,6 @@ def main():
             
             if not clicked_nearby:
                 print ("Can't find Neaby_enemy btn...")
-                return
             
             #loading
             time.sleep(load_wait_time_mob)
