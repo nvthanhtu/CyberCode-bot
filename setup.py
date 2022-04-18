@@ -1,7 +1,7 @@
 import subprocess
 import sys
 
-required = ["numpy", "PIL", "opencv-python"]
+required = ["numpy", "Pillow", "opencv-python"]
 
 def install(package):
     subprocess.check_call([sys.executable, "-m", "pip", "install", package])
