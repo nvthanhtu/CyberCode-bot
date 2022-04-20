@@ -2,7 +2,7 @@ from asyncio.windows_events import NULL
 from cv2 import threshold
 import cv2 as cv
 import numpy as np
-import win32api,win32con
+import utility
 import time
 from PIL import ImageGrab
 
@@ -153,20 +153,13 @@ def click_on_template(template, screenshot, area, colorScale = False):
                     click_position_x = int(max_loc[0] + template_w/2 + area[0])
                     click_position_y = int(max_loc[1] + template_h/2 + area[1])
                     
-                    click(click_position_x, click_position_y)
+                    utility.click(click_position_x, click_position_y)
                     return image_found
             else:
                 time.sleep(1)    
             
         else:
             return image_found
-    
-def click(x,y):
-    win32api.SetCursorPos((x,y))
-    win32api.mouse_event(win32con.MOUSEEVENTF_LEFTDOWN,0,0) 
-    time.sleep(0.1)
-    win32api.mouse_event(win32con.MOUSEEVENTF_LEFTUP,0,0)    
-
 
 if __name__ == "__main__":
     main()
