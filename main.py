@@ -1,5 +1,7 @@
 from asyncio.windows_events import NULL
+from lib2to3.pgen2 import literals
 import random
+import sys
 from cv2 import threshold
 import cv2 as cv
 import numpy as np
@@ -18,12 +20,15 @@ nb_loot_droped = 0
 start_time = 0
 level_mob = 4
 
-def main():
+def main(level):
+    global level_mob 
     global max_tried_main_loop
     global nb_enemies_killed
     global nb_loot_droped
     global start_time 
     global level_mob
+    level_mob = int(level)
+    
     level_mob_img_1 = cv.imread('Image/Level_'+str(level_mob)+'.png', cv.IMREAD_UNCHANGED)
     level_mob_img_2 = cv.imread('Image/Level_'+str(level_mob-1)+'.png', cv.IMREAD_UNCHANGED)
     nearby_enemy_img = cv.imread('Image/Nearby_Enemy.png', cv.IMREAD_UNCHANGED)
@@ -163,4 +168,4 @@ def click_on_template(template, screenshot, area, colorScale = False):
             return image_found
 
 if __name__ == "__main__":
-    main()
+    main(sys.argv[1])
