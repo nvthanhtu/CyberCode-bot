@@ -15,7 +15,7 @@ max_tried_main_loop =3
 nb_enemies_killed = 0
 nb_loot_droped = 0
 start_time = 0
-level_mob = 36
+level_mob = 4
 
 def main():
     global max_tried_main_loop
