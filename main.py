@@ -1,4 +1,5 @@
 from asyncio.windows_events import NULL
+import random
 from cv2 import threshold
 import cv2 as cv
 import numpy as np
@@ -150,8 +151,8 @@ def click_on_template(template, screenshot, area, colorScale = False):
                     template_h = template.shape[0]
                     
                     #take into account offset when screaning
-                    click_position_x = int(max_loc[0] + template_w/2 + area[0])
-                    click_position_y = int(max_loc[1] + template_h/2 + area[1])
+                    click_position_x = int(max_loc[0] + template_w/2 + random.randint(0, 9)+ area[0])
+                    click_position_y = int(max_loc[1] + template_h/2 + random.randint(0, 9) + area[1])
                     
                     utility.click(click_position_x, click_position_y)
                     return image_found
