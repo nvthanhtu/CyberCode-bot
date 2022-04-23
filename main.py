@@ -29,8 +29,8 @@ def main(level):
     global level_mob
     level_mob = int(level)
     
-    level_mob_img_1 = cv.imread('Image/Level_'+str(level_mob)+'.png', cv.IMREAD_UNCHANGED)
-    level_mob_img_2 = cv.imread('Image/Level_'+str(level_mob-1)+'.png', cv.IMREAD_UNCHANGED)
+    level_mob_img_1 = cv.imread('Image/Level/Level_'+str(level_mob)+'.png', cv.IMREAD_UNCHANGED)
+    level_mob_img_2 = cv.imread('Image/Level/Level_'+str(level_mob-1)+'.png', cv.IMREAD_UNCHANGED)
     nearby_enemy_img = cv.imread('Image/Nearby_Enemy.png', cv.IMREAD_UNCHANGED)
     primary_weapon_img = cv.imread('Image/Primary_Weapon.PNG', cv.IMREAD_UNCHANGED)
     take_all_img = cv.imread('Image/Take_all.PNG', cv.IMREAD_UNCHANGED)
